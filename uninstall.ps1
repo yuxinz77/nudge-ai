@@ -1,4 +1,4 @@
-# Nudge 卸载脚本（Windows）。用法：irm https://raw.githubusercontent.com/yuxinz77/nudge-ai/main/uninstall.ps1 | iex
+# Nudge 卸载脚本（Windows）。用法：irm https://nudge-ai.oss-cn-shenzhen.aliyuncs.com/uninstall-win | iex
 $ErrorActionPreference = 'SilentlyContinue'
 Get-Process nudge-ai | Stop-Process -Force
 Remove-ItemProperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -Name 'Nudge'

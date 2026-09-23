@@ -1,5 +1,5 @@
 #!/bin/sh
-# Nudge 卸载脚本（macOS）。用法：curl -fsSL https://raw.githubusercontent.com/yuxinz77/nudge-ai/main/uninstall.sh | sh
+# Nudge 卸载脚本（macOS）。用法：curl -fsSL https://nudge-ai.oss-cn-shenzhen.aliyuncs.com/uninstall-mac | sh
 LABEL="ai.nudge.desktop"
 launchctl bootout "gui/$(id -u)/$LABEL" 2>/dev/null || true
 pkill -x nudge-ai 2>/dev/null || true

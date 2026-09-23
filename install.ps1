@@ -1,8 +1,10 @@
-# Nudge 安装脚本（Windows 10/11，x64）。用法（PowerShell）：irm https://raw.githubusercontent.com/yuxinz77/nudge-ai/main/install.ps1 | iex
+# Nudge 安装脚本（Windows 10/11，x64）。用法（PowerShell）：irm https://nudge-ai.oss-cn-shenzhen.aliyuncs.com/win | iex
+# 下载源：阿里云 OSS 优先（国内秒开），GitHub Releases 备用。
 # 做的事：下载最新版 → 去掉"来自网络"标记 → 静默安装到当前用户目录 → 注册开机自启 → 启动。
 $ErrorActionPreference = 'Stop'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $repo = 'yuxinz77/nudge-ai'
+$oss = 'https://nudge-ai.oss-cn-shenzhen.aliyuncs.com'
 function Retry($what, [scriptblock]$do) {
   for ($i = 1; $i -le 4; $i++) {
     try { return & $do } catch {
@@ -12,7 +14,9 @@ function Retry($what, [scriptblock]$do) {
   }
 }
 Write-Host '查询最新版本…'
-$json = Retry '查询版本' { Invoke-RestMethod "https://github.com/$repo/releases/latest/download/latest.json" -UseBasicParsing }
+$json = $null
+try { $json = Invoke-RestMethod "$oss/latest.json" -UseBasicParsing -TimeoutSec 20 } catch { Write-Host '  OSS 没连上，改用 GitHub…' }
+if (-not $json) { $json = Retry '查询版本' { Invoke-RestMethod "https://github.com/$repo/releases/latest/download/latest.json" -UseBasicParsing } }
 $url = $json.platforms.'windows-x86_64'.url
 $ver = $json.version
 if (-not $url) { throw '没找到 Windows 安装包，稍后再试。' }
@@ -36,4 +40,4 @@ Start-Process $exe.FullName
 Write-Host ''
 Write-Host "装好了：Nudge v$ver 已在任务栏托盘（字母 n）。"
 Write-Host '它平时不露面；你在 Claude Code 或 Codex 里发一句话，它就出来。以后有新版会自己静默更新。'
-Write-Host "卸载：irm https://raw.githubusercontent.com/$repo/main/uninstall.ps1 | iex"
+Write-Host "卸载：irm $oss/uninstall-win | iex"

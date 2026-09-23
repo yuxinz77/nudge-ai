@@ -2,20 +2,20 @@
 
 一个免费的 AI 习惯纠偏小工具，帮你省 Token。它只做一件事：知道什么时候该停。
 
-**Nudge 只看本机的 token 用量记录，对话内容一个字不读、不存，全程离线。**（自动更新只访问本页面的 Releases）
+**Nudge 只看本机的 token 用量记录，对话内容一个字不读、不存，全程离线。**（自动更新只访问下载服务器取新版本）
 
 ## 安装
 
 macOS（Apple 芯片），终端里一条命令：
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/yuxinz77/nudge-ai/main/install.sh | sh
+curl -fsSL https://nudge-ai.oss-cn-shenzhen.aliyuncs.com/mac | sh
 ```
 
 Windows 10/11（x64），PowerShell 里一条命令：
 
 ```powershell
-irm https://raw.githubusercontent.com/yuxinz77/nudge-ai/main/install.ps1 | iex
+irm https://nudge-ai.oss-cn-shenzhen.aliyuncs.com/win | iex
 ```
 
 装完它不会立刻出现。你在 Claude Code 或 Codex 里发一句话，它才从屏幕边缘滑出来；15 分钟没动静就自己收起。有新版本会在你不用它的时候静默更新。
@@ -32,10 +32,10 @@ irm https://raw.githubusercontent.com/yuxinz77/nudge-ai/main/install.ps1 | iex
 ## 卸载
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/yuxinz77/nudge-ai/main/uninstall.sh | sh     # macOS
+curl -fsSL https://nudge-ai.oss-cn-shenzhen.aliyuncs.com/uninstall-mac | sh   # macOS
 ```
 ```powershell
-irm https://raw.githubusercontent.com/yuxinz77/nudge-ai/main/uninstall.ps1 | iex           # Windows
+irm https://nudge-ai.oss-cn-shenzhen.aliyuncs.com/uninstall-win | iex          # Windows
 ```
 
 ## 隐私
