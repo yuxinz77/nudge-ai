@@ -37,6 +37,7 @@ cat > "$PLIST" <<PL
   <key>ProgramArguments</key><array><string>$DEST/Nudge.app/Contents/MacOS/nudge-ai</string><string>--autostart</string></array>
   <key>RunAtLoad</key><true/>
   <key>KeepAlive</key><false/>
+  <key>AbandonProcessGroup</key><true/>
   <key>ProcessType</key><string>Interactive</string>
 </dict></plist>
 PL
