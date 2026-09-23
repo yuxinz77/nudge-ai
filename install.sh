@@ -1,5 +1,5 @@
 #!/bin/sh
-# Nudge 安装脚本（macOS，Apple 芯片）。用法：curl -fsSL https://nudge-ai.oss-cn-shenzhen.aliyuncs.com/mac | sh
+# Nudge 安装脚本（macOS，Apple 芯片）。用法：curl -fsSL https://nudge.yxamz.com/mac | sh
 # 下载源：阿里云 OSS 优先（国内秒开），GitHub Releases 备用。
 # 做的事：下载最新版 → 放进 /Applications → 去掉隔离标记（不弹"无法验证开发者"）→ 注册开机自启 → 启动。
 set -e
@@ -48,4 +48,4 @@ echo
 echo "装好了：Nudge v$VER 已在菜单栏（右上角的字母 n）。"
 echo "一个免费的 AI 习惯纠偏小工具，帮你防降智、省 Token。"
 echo "它平时不露面；你在 Claude Code 或 Codex 里发一句话，它就出来。"
-echo "卸载：curl -fsSL $OSS/uninstall-mac | sh"
+echo "卸载：curl -fsSL https://nudge.yxamz.com/uninstall-mac | sh"

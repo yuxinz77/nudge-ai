@@ -1,4 +1,4 @@
-# Nudge 安装脚本（Windows 10/11，x64）。用法（PowerShell）：irm https://nudge-ai.oss-cn-shenzhen.aliyuncs.com/win | iex
+# Nudge 安装脚本（Windows 10/11，x64）。用法（PowerShell）：irm https://nudge.yxamz.com/win | iex
 # 下载源：阿里云 OSS 优先（国内秒开），GitHub Releases 备用。
 # 做的事：下载最新版 → 去掉"来自网络"标记 → 静默安装到当前用户目录 → 注册开机自启 → 启动。
 $ErrorActionPreference = 'Stop'
@@ -41,4 +41,4 @@ Write-Host ''
 Write-Host "装好了：Nudge v$ver 已在任务栏托盘（字母 n）。"
 Write-Host '一个免费的 AI 习惯纠偏小工具，帮你防降智、省 Token。'
 Write-Host '它平时不露面；你在 Claude Code 或 Codex 里发一句话，它就出来。'
-Write-Host "卸载：irm $oss/uninstall-win | iex"
+Write-Host "卸载：irm https://nudge.yxamz.com/uninstall-win | iex"

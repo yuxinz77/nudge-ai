@@ -9,13 +9,13 @@
 macOS（Apple 芯片），终端里一条命令：
 
 ```sh
-curl -fsSL https://nudge-ai.oss-cn-shenzhen.aliyuncs.com/mac | sh
+curl -fsSL https://nudge.yxamz.com/mac | sh
 ```
 
 Windows 10/11（x64），PowerShell 里一条命令：
 
 ```powershell
-irm https://nudge-ai.oss-cn-shenzhen.aliyuncs.com/win | iex
+irm https://nudge.yxamz.com/win | iex
 ```
 
 装完它不会立刻出现。你在 Claude Code 或 Codex 里发一句话，它才从屏幕边缘滑出来；15 分钟没动静就自己收起。有新版本会在你不用它的时候静默更新。
@@ -32,10 +32,10 @@ irm https://nudge-ai.oss-cn-shenzhen.aliyuncs.com/win | iex
 ## 卸载
 
 ```sh
-curl -fsSL https://nudge-ai.oss-cn-shenzhen.aliyuncs.com/uninstall-mac | sh   # macOS
+curl -fsSL https://nudge.yxamz.com/uninstall-mac | sh   # macOS
 ```
 ```powershell
-irm https://nudge-ai.oss-cn-shenzhen.aliyuncs.com/uninstall-win | iex          # Windows
+irm https://nudge.yxamz.com/uninstall-win | iex          # Windows
 ```
 
 ## 隐私
