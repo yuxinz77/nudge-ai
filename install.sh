@@ -45,5 +45,6 @@ launchctl kickstart -k "gui/$(id -u)/$LABEL"   # RunAtLoad 在部分环境下不
 
 echo
 echo "装好了：Nudge v$VER 已在菜单栏（右上角的字母 n）。"
-echo "它平时不露面；你在 Claude Code 或 Codex 里发一句话，它就出来。以后有新版会自己静默更新。"
+echo "一个免费的 AI 习惯纠偏小工具，帮你防降智、省 Token。"
+echo "它平时不露面；你在 Claude Code 或 Codex 里发一句话，它就出来。"
 echo "卸载：curl -fsSL $OSS/uninstall-mac | sh"

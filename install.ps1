@@ -39,5 +39,6 @@ Start-Process $exe.FullName
 
 Write-Host ''
 Write-Host "装好了：Nudge v$ver 已在任务栏托盘（字母 n）。"
-Write-Host '它平时不露面；你在 Claude Code 或 Codex 里发一句话，它就出来。以后有新版会自己静默更新。'
+Write-Host '一个免费的 AI 习惯纠偏小工具，帮你防降智、省 Token。'
+Write-Host '它平时不露面；你在 Claude Code 或 Codex 里发一句话，它就出来。'
 Write-Host "卸载：irm $oss/uninstall-win | iex"
