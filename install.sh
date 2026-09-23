@@ -13,7 +13,7 @@ VER=$(printf '%s' "$JSON" | tr -d '\n' | grep -oE '"version" *: *"[^"]+"' | head
 [ -n "$URL" ] || { echo "没找到 Mac 安装包，稍后再试。"; exit 1; }
 
 TMP=$(mktemp -d)
-echo "下载 Nudge v$VER…"
+echo "下载 Nudge v$VER"
 curl -fL --progress-bar "$URL" -o "$TMP/nudge.tar.gz"
 
 DEST=/Applications
@@ -38,7 +38,8 @@ cat > "$PLIST" <<PL
   <key>ProcessType</key><string>Interactive</string>
 </dict></plist>
 PL
-launchctl bootstrap "gui/$(id -u)" "$PLIST"
+launchctl bootstrap "gui/$(id -u)" "$PLIST" 2>/dev/null || true
+launchctl kickstart -k "gui/$(id -u)/$LABEL"   # RunAtLoad 在部分环境下不立刻拉起，显式启动一次
 
 echo
 echo "装好了：Nudge v$VER 已在菜单栏（右上角的字母 n）。"
