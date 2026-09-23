@@ -34,7 +34,7 @@ cat > "$PLIST" <<PL
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
   <key>Label</key><string>$LABEL</string>
-  <key>ProgramArguments</key><array><string>$DEST/Nudge.app/Contents/MacOS/nudge-ai</string></array>
+  <key>ProgramArguments</key><array><string>$DEST/Nudge.app/Contents/MacOS/nudge-ai</string><string>--autostart</string></array>
   <key>RunAtLoad</key><true/>
   <key>KeepAlive</key><false/>
   <key>ProcessType</key><string>Interactive</string>

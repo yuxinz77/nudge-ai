@@ -34,7 +34,7 @@ if ($reg -and $reg.InstallLocation) { $dir = $reg.InstallLocation }
 if (-not $dir -or -not (Test-Path $dir)) { $dir = Join-Path $env:LOCALAPPDATA 'Nudge' }
 $exe = Get-ChildItem $dir -Filter '*.exe' | Where-Object Name -ne 'uninstall.exe' | Select-Object -First 1
 if (-not $exe) { throw "安装完成但没找到程序文件（$dir）。" }
-Set-ItemProperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -Name 'Nudge' -Value ('"' + $exe.FullName + '"')
+Set-ItemProperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -Name 'Nudge' -Value ('"' + $exe.FullName + '" --autostart')
 Start-Process $exe.FullName
 
 Write-Host ''
