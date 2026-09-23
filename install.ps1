@@ -1,16 +1,24 @@
-﻿# Nudge 安装脚本（Windows 10/11，x64）。用法（PowerShell）：irm https://raw.githubusercontent.com/yuxinz77/nudge-ai/main/install.ps1 | iex
+# Nudge 安装脚本（Windows 10/11，x64）。用法（PowerShell）：irm https://raw.githubusercontent.com/yuxinz77/nudge-ai/main/install.ps1 | iex
 # 做的事：下载最新版 → 去掉"来自网络"标记 → 静默安装到当前用户目录 → 注册开机自启 → 启动。
 $ErrorActionPreference = 'Stop'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $repo = 'yuxinz77/nudge-ai'
+function Retry($what, [scriptblock]$do) {
+  for ($i = 1; $i -le 4; $i++) {
+    try { return & $do } catch {
+      if ($i -eq 4) { throw "$what 失败：$($_.Exception.Message)`n连不上 GitHub。请先打开代理（系统代理）再重新运行这条命令。" }
+      Write-Host "  $what 第 $i 次没成功，3 秒后重试…"; Start-Sleep 3
+    }
+  }
+}
 Write-Host '查询最新版本…'
-$json = Invoke-RestMethod "https://github.com/$repo/releases/latest/download/latest.json"
+$json = Retry '查询版本' { Invoke-RestMethod "https://github.com/$repo/releases/latest/download/latest.json" -UseBasicParsing }
 $url = $json.platforms.'windows-x86_64'.url
 $ver = $json.version
 if (-not $url) { throw '没找到 Windows 安装包，稍后再试。' }
 $tmp = Join-Path $env:TEMP 'Nudge-setup.exe'
 Write-Host "下载 Nudge v$ver…"
-Invoke-WebRequest $url -OutFile $tmp -UseBasicParsing
+Retry '下载' { Invoke-WebRequest $url -OutFile $tmp -UseBasicParsing }
 Unblock-File $tmp
 Get-Process nudge-ai -ErrorAction SilentlyContinue | Stop-Process -Force
 Start-Process $tmp -ArgumentList '/S' -Wait
